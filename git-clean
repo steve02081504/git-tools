@@ -1,0 +1,33 @@
+#!/bin/bash
+config="./.git/config"
+backup="./clean_temp_file"
+objects=".git/objects"
+speed_up_dir="clean_temp_dir"
+git pull
+git-update
+git-clean-objs
+while true
+do
+if [ -f "$config" ]
+then
+	mv "$config" "$backup" -b
+	mv "$objects" "$speed_up_dir" -b
+	rm -rf ./.git
+	git init
+	mv "$backup" "$config" -f
+	rm -rf "$objects"
+	mv "$speed_up_dir" "$objects" -f
+	git add -A
+	git commit -m "clean proj"
+	git push -f
+	git fetch --all
+	git-clean-objs
+	exit 0
+elif [ $(pwd) != "/" ]
+then
+	cd ..
+else
+	echo "could not found proj path"
+	exit 1
+fi
+done

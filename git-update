@@ -1,0 +1,6 @@
+#!/bin/bash
+git add -A
+git commit -m "a commit"
+git push
+echo "done."
+exit 0

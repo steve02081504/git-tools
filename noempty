@@ -1,0 +1,22 @@
+#!/bin/bash
+function mapper(){
+	if [ "`ls $1`" = "" ]
+	then
+		echo "a placeholder to ensure successful synchronization" >> $1/placeholder
+	else
+		for e in `ls $1`
+		do
+			dorf=$1"/"$e
+			if [ -d $dorf ]
+			then
+				mapper $dorf
+			else
+				if [ ! -s $dorf ]
+				then
+					echo "this used to be a voidfile" >> $dorf
+				fi
+			fi
+		done
+	fi
+}
+mapper $(pwd)

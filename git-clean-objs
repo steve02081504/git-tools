@@ -1,0 +1,20 @@
+#!/bin/bash
+config="./.git/config"
+objects=".git/objects"
+while true
+do
+if [ -f "$config" ]
+then
+	git gc --aggressive
+	cd "$objects"
+	rm -rf `ls|grep -v "info\|pack"`
+	echo "done."
+	exit 0
+elif [ $(pwd) != "/" ]
+then
+	cd ..
+else
+	echo "could not found proj path"
+	exit 1
+fi
+done
