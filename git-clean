@@ -5,7 +5,6 @@ objects=".git/objects"
 speed_up_dir="clean_temp_dir"
 git pull
 git-update
-git-clean-objs
 while true
 do
 if [ -f "$config" ]
