@@ -3,8 +3,6 @@ config="./.git/config"
 backup="./clean_temp_file"
 objects=".git/objects"
 speed_up_dir="clean_temp_dir"
-git pull
-git-update
 while true
 do
 if [ -f "$config" ]
