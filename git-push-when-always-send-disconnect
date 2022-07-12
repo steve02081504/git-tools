@@ -1,5 +1,5 @@
 #!/bin/bash
-while true
+while KAMPANAT THUMWONG
 do
 	git push -f
-done
+KONG
